@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NodarbibuSaraksts.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="NodarbibuSarakstsStoreContainer">
+    <EntitySet Name="StudentsSet" EntityType="NodarbibuSaraksts.Store.StudentsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LektorsSet" EntityType="NodarbibuSaraksts.Store.LektorsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KurssSet" EntityType="NodarbibuSaraksts.Store.KurssSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProgrammaSet" EntityType="NodarbibuSaraksts.Store.ProgrammaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentuGrupaSet" EntityType="NodarbibuSaraksts.Store.StudentuGrupaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NodarbibaSet" EntityType="NodarbibuSaraksts.Store.NodarbibaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentsStudentuGrupa" EntityType="NodarbibuSaraksts.Store.StudentsStudentuGrupa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LektorsKurss" EntityType="NodarbibuSaraksts.Store.LektorsKurss" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_StudentsStudentuGrupa_Students" Association="NodarbibuSaraksts.Store.FK_StudentsStudentuGrupa_Students">
+      <End Role="Students" EntitySet="StudentsSet" />
+      <End Role="StudentsStudentuGrupa" EntitySet="StudentsStudentuGrupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentsStudentuGrupa_StudentuGrupa" Association="NodarbibuSaraksts.Store.FK_StudentsStudentuGrupa_StudentuGrupa">
+      <End Role="StudentuGrupa" EntitySet="StudentuGrupaSet" />
+      <End Role="StudentsStudentuGrupa" EntitySet="StudentsStudentuGrupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LektorsKurss_Lektors" Association="NodarbibuSaraksts.Store.FK_LektorsKurss_Lektors">
+      <End Role="Lektors" EntitySet="LektorsSet" />
+      <End Role="LektorsKurss" EntitySet="LektorsKurss" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LektorsKurss_Kurss" Association="NodarbibuSaraksts.Store.FK_LektorsKurss_Kurss">
+      <End Role="Kurss" EntitySet="KurssSet" />
+      <End Role="LektorsKurss" EntitySet="LektorsKurss" />
+    </AssociationSet>
+    <AssociationSet Name="ProgrammaKurss" Association="NodarbibuSaraksts.Store.ProgrammaKurss">
+      <End Role="Programma" EntitySet="ProgrammaSet" />
+      <End Role="Kurss" EntitySet="KurssSet" />
+    </AssociationSet>
+    <AssociationSet Name="KurssNodarbiba" Association="NodarbibuSaraksts.Store.KurssNodarbiba">
+      <End Role="Kurss" EntitySet="KurssSet" />
+      <End Role="Nodarbiba" EntitySet="NodarbibaSet" />
+    </AssociationSet>
+    <AssociationSet Name="LektorsNodarbiba" Association="NodarbibuSaraksts.Store.LektorsNodarbiba">
+      <End Role="Lektors" EntitySet="LektorsSet" />
+      <End Role="Nodarbiba" EntitySet="NodarbibaSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProgrammaStudentuGrupa" Association="NodarbibuSaraksts.Store.ProgrammaStudentuGrupa">
+      <End Role="Programma" EntitySet="ProgrammaSet" />
+      <End Role="StudentuGrupa" EntitySet="StudentuGrupaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StudentsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vards" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Uzvards" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StudNumurs" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LektorsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vards" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Uzvards" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TelNr" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="KurssSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nosaukums" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Stundas" Type="smallint" Nullable="false" />
+    <Property Name="Programma_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProgrammaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nosaukums" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentuGrupaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nosaukums" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Programma_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NodarbibaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Datums" Type="datetime" Nullable="false" />
+    <Property Name="Sakums" Type="time" Nullable="false" />
+    <Property Name="Beigas" Type="time" Nullable="false" />
+    <Property Name="Kurss_Id" Type="int" Nullable="false" />
+    <Property Name="Lektors_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentsStudentuGrupa">
+    <Key>
+      <PropertyRef Name="Students_Id" />
+      <PropertyRef Name="StudentuGrupa_Id" />
+    </Key>
+    <Property Name="Students_Id" Type="int" Nullable="false" />
+    <Property Name="StudentuGrupa_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LektorsKurss">
+    <Key>
+      <PropertyRef Name="Lektors_Id" />
+      <PropertyRef Name="Kurss_Id" />
+    </Key>
+    <Property Name="Lektors_Id" Type="int" Nullable="false" />
+    <Property Name="Kurss_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ProgrammaKurss">
+    <End Role="Programma" Type="NodarbibuSaraksts.Store.ProgrammaSet" Multiplicity="1" />
+    <End Role="Kurss" Type="NodarbibuSaraksts.Store.KurssSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kurss">
+        <PropertyRef Name="Programma_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KurssNodarbiba">
+    <End Role="Kurss" Type="NodarbibuSaraksts.Store.KurssSet" Multiplicity="1" />
+    <End Role="Nodarbiba" Type="NodarbibuSaraksts.Store.NodarbibaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurss">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Nodarbiba">
+        <PropertyRef Name="Kurss_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LektorsNodarbiba">
+    <End Role="Lektors" Type="NodarbibuSaraksts.Store.LektorsSet" Multiplicity="1" />
+    <End Role="Nodarbiba" Type="NodarbibuSaraksts.Store.NodarbibaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Nodarbiba">
+        <PropertyRef Name="Lektors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProgrammaStudentuGrupa">
+    <End Role="Programma" Type="NodarbibuSaraksts.Store.ProgrammaSet" Multiplicity="1" />
+    <End Role="StudentuGrupa" Type="NodarbibuSaraksts.Store.StudentuGrupaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentuGrupa">
+        <PropertyRef Name="Programma_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentsStudentuGrupa_Students">
+    <End Role="Students" Type="NodarbibuSaraksts.Store.StudentsSet" Multiplicity="1" />
+    <End Role="StudentsStudentuGrupa" Type="NodarbibuSaraksts.Store.StudentsStudentuGrupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentsStudentuGrupa">
+        <PropertyRef Name="Students_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentsStudentuGrupa_StudentuGrupa">
+    <End Role="StudentsStudentuGrupa" Type="NodarbibuSaraksts.Store.StudentsStudentuGrupa" Multiplicity="*" />
+    <End Role="StudentuGrupa" Type="NodarbibuSaraksts.Store.StudentuGrupaSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="StudentuGrupa">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentsStudentuGrupa">
+        <PropertyRef Name="StudentuGrupa_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LektorsKurss_Lektors">
+    <End Role="Lektors" Type="NodarbibuSaraksts.Store.LektorsSet" Multiplicity="1" />
+    <End Role="LektorsKurss" Type="NodarbibuSaraksts.Store.LektorsKurss" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LektorsKurss">
+        <PropertyRef Name="Lektors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LektorsKurss_Kurss">
+    <End Role="LektorsKurss" Type="NodarbibuSaraksts.Store.LektorsKurss" Multiplicity="*" />
+    <End Role="Kurss" Type="NodarbibuSaraksts.Store.KurssSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kurss">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LektorsKurss">
+        <PropertyRef Name="Kurss_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="NodarbibuSaraksts" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="NodarbibuSarakstsContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StudentsSet" EntityType="NodarbibuSaraksts.Students" />
+          <EntitySet Name="LektorsSet" EntityType="NodarbibuSaraksts.Lektors" />
+          <EntitySet Name="KurssSet" EntityType="NodarbibuSaraksts.Kurss" />
+          <EntitySet Name="ProgrammaSet" EntityType="NodarbibuSaraksts.Programma" />
+          <EntitySet Name="StudentuGrupaSet" EntityType="NodarbibuSaraksts.StudentuGrupa" />
+          <EntitySet Name="NodarbibaSet" EntityType="NodarbibuSaraksts.Nodarbiba" />
+          <AssociationSet Name="StudentsStudentuGrupa" Association="NodarbibuSaraksts.StudentsStudentuGrupa">
+            <End Role="Students" EntitySet="StudentsSet" />
+            <End Role="StudentuGrupa" EntitySet="StudentuGrupaSet" />
+          </AssociationSet>
+          <AssociationSet Name="LektorsKurss" Association="NodarbibuSaraksts.LektorsKurss">
+            <End Role="Lektors" EntitySet="LektorsSet" />
+            <End Role="Kurss" EntitySet="KurssSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProgrammaKurss" Association="NodarbibuSaraksts.ProgrammaKurss">
+            <End Role="Programma" EntitySet="ProgrammaSet" />
+            <End Role="Kurss" EntitySet="KurssSet" />
+          </AssociationSet>
+          <AssociationSet Name="KurssNodarbiba" Association="NodarbibuSaraksts.KurssNodarbiba">
+            <End Role="Kurss" EntitySet="KurssSet" />
+            <End Role="Nodarbiba" EntitySet="NodarbibaSet" />
+          </AssociationSet>
+          <AssociationSet Name="LektorsNodarbiba" Association="NodarbibuSaraksts.LektorsNodarbiba">
+            <End Role="Lektors" EntitySet="LektorsSet" />
+            <End Role="Nodarbiba" EntitySet="NodarbibaSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProgrammaStudentuGrupa" Association="NodarbibuSaraksts.ProgrammaStudentuGrupa">
+            <End Role="Programma" EntitySet="ProgrammaSet" />
+            <End Role="StudentuGrupa" EntitySet="StudentuGrupaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vards" Type="String" Nullable="false" />
+          <Property Name="Uzvards" Type="String" Nullable="false" />
+          <Property Name="StudNumurs" Type="String" Nullable="false" />
+          <NavigationProperty Name="StudentuGrupa" Relationship="NodarbibuSaraksts.StudentsStudentuGrupa" FromRole="Students" ToRole="StudentuGrupa" />
+        </EntityType>
+        <EntityType Name="Lektors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vards" Type="String" Nullable="false" />
+          <Property Name="Uzvards" Type="String" Nullable="false" />
+          <Property Name="TelNr" Type="String" Nullable="true" />
+          <NavigationProperty Name="Kurss" Relationship="NodarbibuSaraksts.LektorsKurss" FromRole="Lektors" ToRole="Kurss" />
+          <NavigationProperty Name="Nodarbiba" Relationship="NodarbibuSaraksts.LektorsNodarbiba" FromRole="Lektors" ToRole="Nodarbiba" />
+        </EntityType>
+        <EntityType Name="Kurss">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nosaukums" Type="String" Nullable="false" />
+          <Property Name="Stundas" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Lektors" Relationship="NodarbibuSaraksts.LektorsKurss" FromRole="Kurss" ToRole="Lektors" />
+          <NavigationProperty Name="Programma" Relationship="NodarbibuSaraksts.ProgrammaKurss" FromRole="Kurss" ToRole="Programma" />
+          <NavigationProperty Name="Nodarbiba" Relationship="NodarbibuSaraksts.KurssNodarbiba" FromRole="Kurss" ToRole="Nodarbiba" />
+        </EntityType>
+        <EntityType Name="Programma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nosaukums" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kurss" Relationship="NodarbibuSaraksts.ProgrammaKurss" FromRole="Programma" ToRole="Kurss" />
+          <NavigationProperty Name="StudentuGrupa" Relationship="NodarbibuSaraksts.ProgrammaStudentuGrupa" FromRole="Programma" ToRole="StudentuGrupa" />
+        </EntityType>
+        <EntityType Name="StudentuGrupa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nosaukums" Type="String" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="NodarbibuSaraksts.StudentsStudentuGrupa" FromRole="StudentuGrupa" ToRole="Students" />
+          <NavigationProperty Name="Programma" Relationship="NodarbibuSaraksts.ProgrammaStudentuGrupa" FromRole="StudentuGrupa" ToRole="Programma" />
+        </EntityType>
+        <EntityType Name="Nodarbiba">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datums" Type="DateTime" Nullable="false" />
+          <Property Name="Sakums" Type="Time" Nullable="false" />
+          <Property Name="Beigas" Type="Time" Nullable="false" />
+          <NavigationProperty Name="Kurss" Relationship="NodarbibuSaraksts.KurssNodarbiba" FromRole="Nodarbiba" ToRole="Kurss" />
+          <NavigationProperty Name="Lektors" Relationship="NodarbibuSaraksts.LektorsNodarbiba" FromRole="Nodarbiba" ToRole="Lektors" />
+        </EntityType>
+        <Association Name="StudentsStudentuGrupa">
+          <End Type="NodarbibuSaraksts.Students" Role="Students" Multiplicity="*" />
+          <End Type="NodarbibuSaraksts.StudentuGrupa" Role="StudentuGrupa" Multiplicity="*" />
+        </Association>
+        <Association Name="LektorsKurss">
+          <End Type="NodarbibuSaraksts.Lektors" Role="Lektors" Multiplicity="*" />
+          <End Type="NodarbibuSaraksts.Kurss" Role="Kurss" Multiplicity="*" />
+        </Association>
+        <Association Name="ProgrammaKurss">
+          <End Type="NodarbibuSaraksts.Programma" Role="Programma" Multiplicity="1" />
+          <End Type="NodarbibuSaraksts.Kurss" Role="Kurss" Multiplicity="*" />
+        </Association>
+        <Association Name="KurssNodarbiba">
+          <End Type="NodarbibuSaraksts.Kurss" Role="Kurss" Multiplicity="1" />
+          <End Type="NodarbibuSaraksts.Nodarbiba" Role="Nodarbiba" Multiplicity="*" />
+        </Association>
+        <Association Name="LektorsNodarbiba">
+          <End Type="NodarbibuSaraksts.Lektors" Role="Lektors" Multiplicity="1" />
+          <End Type="NodarbibuSaraksts.Nodarbiba" Role="Nodarbiba" Multiplicity="*" />
+        </Association>
+        <Association Name="ProgrammaStudentuGrupa">
+          <End Type="NodarbibuSaraksts.Programma" Role="Programma" Multiplicity="1" />
+          <End Type="NodarbibuSaraksts.StudentuGrupa" Role="StudentuGrupa" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NodarbibuSarakstsStoreContainer" CdmEntityContainer="NodarbibuSarakstsContainer">
+    <EntitySetMapping Name="StudentsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NodarbibuSaraksts.Students)">
+        <MappingFragment StoreEntitySet="StudentsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Vards" ColumnName="Vards" />
+          <ScalarProperty Name="Uzvards" ColumnName="Uzvards" />
+          <ScalarProperty Name="StudNumurs" ColumnName="StudNumurs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LektorsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NodarbibuSaraksts.Lektors)">
+        <MappingFragment StoreEntitySet="LektorsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Vards" ColumnName="Vards" />
+          <ScalarProperty Name="Uzvards" ColumnName="Uzvards" />
+          <ScalarProperty Name="TelNr" ColumnName="TelNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KurssSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NodarbibuSaraksts.Kurss)">
+        <MappingFragment StoreEntitySet="KurssSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nosaukums" ColumnName="Nosaukums" />
+          <ScalarProperty Name="Stundas" ColumnName="Stundas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgrammaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NodarbibuSaraksts.Programma)">
+        <MappingFragment StoreEntitySet="ProgrammaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nosaukums" ColumnName="Nosaukums" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentuGrupaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NodarbibuSaraksts.StudentuGrupa)">
+        <MappingFragment StoreEntitySet="StudentuGrupaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nosaukums" ColumnName="Nosaukums" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NodarbibaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NodarbibuSaraksts.Nodarbiba)">
+        <MappingFragment StoreEntitySet="NodarbibaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Datums" ColumnName="Datums" />
+          <ScalarProperty Name="Sakums" ColumnName="Sakums" />
+          <ScalarProperty Name="Beigas" ColumnName="Beigas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="StudentsStudentuGrupa" TypeName="NodarbibuSaraksts.StudentsStudentuGrupa" StoreEntitySet="StudentsStudentuGrupa">
+      <EndProperty Name="Students">
+        <ScalarProperty Name="Id" ColumnName="Students_Id" />
+      </EndProperty>
+      <EndProperty Name="StudentuGrupa">
+        <ScalarProperty Name="Id" ColumnName="StudentuGrupa_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LektorsKurss" TypeName="NodarbibuSaraksts.LektorsKurss" StoreEntitySet="LektorsKurss">
+      <EndProperty Name="Lektors">
+        <ScalarProperty Name="Id" ColumnName="Lektors_Id" />
+      </EndProperty>
+      <EndProperty Name="Kurss">
+        <ScalarProperty Name="Id" ColumnName="Kurss_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProgrammaKurss" TypeName="NodarbibuSaraksts.ProgrammaKurss" StoreEntitySet="KurssSet">
+      <EndProperty Name="Programma">
+        <ScalarProperty Name="Id" ColumnName="Programma_Id" />
+      </EndProperty>
+      <EndProperty Name="Kurss">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KurssNodarbiba" TypeName="NodarbibuSaraksts.KurssNodarbiba" StoreEntitySet="NodarbibaSet">
+      <EndProperty Name="Kurss">
+        <ScalarProperty Name="Id" ColumnName="Kurss_Id" />
+      </EndProperty>
+      <EndProperty Name="Nodarbiba">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LektorsNodarbiba" TypeName="NodarbibuSaraksts.LektorsNodarbiba" StoreEntitySet="NodarbibaSet">
+      <EndProperty Name="Lektors">
+        <ScalarProperty Name="Id" ColumnName="Lektors_Id" />
+      </EndProperty>
+      <EndProperty Name="Nodarbiba">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProgrammaStudentuGrupa" TypeName="NodarbibuSaraksts.ProgrammaStudentuGrupa" StoreEntitySet="StudentuGrupaSet">
+      <EndProperty Name="Programma">
+        <ScalarProperty Name="Id" ColumnName="Programma_Id" />
+      </EndProperty>
+      <EndProperty Name="StudentuGrupa">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
