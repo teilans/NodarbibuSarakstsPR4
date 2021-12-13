@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodarbibuSarakstsPR4", "NodarbibuSarakstsPR4.csproj", "{CEDF7D5C-0F40-464D-8E0A-EDBA3FD49BF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodarbibuSarakstsApp", "..\NodarbibuSarakstsApp\NodarbibuSarakstsApp.csproj", "{96A7D32F-9EA8-4594-B3E7-D1F02961BFEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodarbibuSarakstsApp", "NodarbibuSarakstsApp\NodarbibuSarakstsApp.csproj", "{96A7D32F-9EA8-4594-B3E7-D1F02961BFEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
