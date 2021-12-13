@@ -6,6 +6,8 @@
 -- Generated from EDMX file: C:\Users\Artis.Teilans\Source\Repos\NodarbibuSarakstsPR4\NodarbibuSaraksts.edmx
 -- --------------------------------------------------
 
+-- Test L
+
 SET QUOTED_IDENTIFIER OFF;
 GO
 --USE [NodarbibuSarakstsPR4]; labots
